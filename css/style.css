@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+a{
+    text-decoration: none;
+    color:#fff ;
+}
+
 .heading-26{
     font-size: 26px;
     color: #fff;
@@ -239,11 +244,11 @@ li{
         padding: 0;
     }
 
-    .graph-width{
+    .graph-width img{
         align-items: center;
         justify-content: center;
-        width: 350px;
-        height: 350px;
+        width:350px;
+        height: 400px;
     }
 
     .img-width3 {
