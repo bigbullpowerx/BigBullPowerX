@@ -178,18 +178,18 @@
 
     <div class="slide-bg-color">
         <div id="form" class="container pt-3 pb-3 ">
-          <form method="POST" action="component/thank-you.html" onsubmit="sendEmail(); reset(); return false;">
+          <form method="POST" action="component/thank-you.html" name="contact-form" >
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="आपका नाम">
+              <input type="text" class="form-control" name="name" id="name" placeholder="आपका नाम">
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
-              <input type="text" class="form-control" id="phone" placeholder="फोन नंबर:">
+              <input type="text" class="form-control" name="phone" id="phone" placeholder="फोन नंबर:">
             </div>
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Address</label>
-              <textarea class="form-control" id="address" rows="3" placeholder="आपका पता :"></textarea>
+              <textarea class="form-control" name="address" id="address" rows="3" placeholder="आपका पता :"></textarea>
             </div>
 
             <div class="d-grid gap-2" align="center">
@@ -200,6 +200,18 @@
           </form>      
         </div>
     </div>
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbyGNXKVOIjgaoZ_WwJA6vhn0yyiCrVBQv_2U2PpGv0SF7ltZ1PXg9ul_sOyWzW1l0AV/exec";
+
+      const form = document.forms['contact-form']
+      form.addEventListener('submit', e=>{
+        e.preventDefault()
+        fetch(scriptURL,{method:'POST', body: new FormData(form)})
+        .then(response => alert('Thank you! your form submiited successfully'))
+        .then(()=>{window.location.reload();})
+        .catch(error=> console.error('Error', error.message))
+      })
+    </script>
 
     <div class="bg-dark pt-1 pb-1 ">
       <div class="container">
