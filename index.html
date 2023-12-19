@@ -213,6 +213,8 @@
         .then(response => alert('Thank you! your form submiited successfully'))
         .then(()=>{window.location.reload();})
         .catch(error=> console.error('Error', error.message))
+        document.forms['contact-form'].reset();
+
         
       }
         
