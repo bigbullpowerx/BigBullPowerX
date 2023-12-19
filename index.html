@@ -175,7 +175,7 @@
         </div>
     </div>
 </div>
-
+      
     <div class="slide-bg-color">
         <div id="form" class="container pt-3 pb-3 ">
           <form method="POST" action="component/thank-you.html" name="contact-form" >
@@ -195,10 +195,11 @@
 
             <div class="d-grid gap-2" align="center">
               
-              <button type="submit" class="btn" style="background-color:#61CE70; color: #ffffff;">ऑर्डर करे</button>
+              <button type="submit" class="btn" onclick="validateForm(flag)" style="background-color:#61CE70; color: #ffffff;">ऑर्डर करे</button>
             </div>
 
-          </form>      
+          </form> 
+          <script src="Script/validation.js"></script>     
         </div>
     </div>
     <script>
@@ -207,11 +208,16 @@
       const form = document.forms['contact-form']
       form.addEventListener('submit', e=>{
         e.preventDefault()
-        fetch(scriptURL,{method:'POST', body: new FormData(form)})
+        if(validateForm()==true){
+          fetch(scriptURL,{method:'POST', body: new FormData(form)})
         .then(response => alert('Thank you! your form submiited successfully'))
         .then(()=>{window.location.reload();})
         .catch(error=> console.error('Error', error.message))
+        
+      }
+        
       })
+      
     </script>
 
     <div class="bg-dark pt-1 pb-1 ">
